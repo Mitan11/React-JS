@@ -5,7 +5,7 @@ function ButtonBody() {
 
     return (
         <>
-            <div className={`w-screen h-screen bg-${color} flex justify-center items-center`}>
+            <div className={`w-screen h-screen bg-${color} duration-500 flex justify-center items-center`}>
                 <div className="flex bg-white w-fit px-1.25 py-1.25 shadow-box-up rounded-2xl">
                     <div className="dark:shadow-buttons-box-dark rounded-2xl w-full px-3 py-3 flex justify-center items-center">
                         <button
