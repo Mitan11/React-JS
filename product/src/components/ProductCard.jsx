@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import Preloder from './Preloder'
 
 function ProductCard() {
-    const [productData, setProductData] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [productData, setProductData] = useState(null);
+    const [currentIndex, setCurrentIndex] = useState(1);
 
     // Fetch product data from API
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('https://fakestoreapi.com/products');
+                const res = await fetch(`https://fakestoreapi.com/products/${currentIndex}`);
                 const data = await res.json();
+                console.log(data);
                 setProductData(data);
             } catch (error) {
                 console.log('Error:', error);
@@ -17,7 +19,7 @@ function ProductCard() {
         };
 
         fetchData();
-    }, []);
+    }, [currentIndex]);
 
     // Function to handle "Previous" button click
     const handlePrevious = () => {
@@ -34,54 +36,58 @@ function ProductCard() {
     };
 
     return (
-        <div
-            className="d-flex justify-content-center align-items-center vh-100 position-relative"
-            style={{ backgroundColor: '#f8f9fa' }}
-        >
-            {productData.length > 0 ? (
-                <>
-                    {/* Previous Button */}
-                    <button
-                        onClick={handlePrevious}
-                        className="btn btn-secondary position-absolute"
-                        style={{ left: '10%', top: '50%', transform: 'translateY(-50%)' }}
-                    >
-                        Previous
-                    </button>
+        <>
+            <h1 className='text-center p-4 bg-info'>Product : {productData.id}</h1>
+            <div
+                className="d-flex bg-warning justify-content-center align-items-center p-5 position-relative"
+            >
+                {/* Previous Button */}
+                <button
+                    onClick={handlePrevious}
+                    className="btn btn-secondary position-absolute bg-danger"
+                    style={{ left: '10%', top: '50%', transform: 'translateY(-50%)' }}
+                >
+                    Previous
+                </button>
 
-                    {/* Card */}
-                    <div className="card" style={{ width: '20rem' }}>
-                        <img
-                            src={productData[currentIndex].image}
-                            className="card-img-top object-fit-contain img-thumbnail" style={{height : "200px"}}
-                            alt={productData[currentIndex].title}
-                        />
-                        <div className="card-body">
-                            <h5 className="card-title">{productData[currentIndex].title}</h5>
-                            <p className="card-text">
-                                <strong>ID:</strong> {productData[currentIndex].id}
-                            </p>
-                            <p className="card-text">{productData[currentIndex].description}</p>
-                            <p className="card-text">
-                                <strong>Price:</strong> ${productData[currentIndex].price}
-                            </p>
-                            <a href="#" className="btn btn-primary">
-                                Buy Now
-                            </a>
+                {productData ? (
+                    <>
+
+                        {/* Card */}
+                        <div className="card" style={{ width: '20rem' }}>
+                            <div className="card-header p-1 rounded">
+                                <img
+                                    src={productData.image}
+                                    className="card-img-top object-fit-contain img-thumbnail" style={{ height: "200px" }}
+                                    alt={productData.title}
+                                />
+                            </div>
+                            <div className="card-body">
+                                <h5 className="card-title">{productData.title}</h5>
+                                <p className="card-text">{productData.description.slice(0,100)}</p>
+                                <p className="card-text">
+                                    <strong>Price:</strong> ${productData.price}
+                                </p>
+                            </div>
+                            <div className="card-footer">
+                                <a href="#" className="btn btn-primary">
+                                    Buy Now
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Next Button */}
-                    <button
-                        onClick={handleNext}
-                        className="btn btn-secondary position-absolute"
-                        style={{ right: '10%', top: '50%', transform: 'translateY(-50%)' }}
-                    >
-                        Next
-                    </button>
-                </>
-            ) : <h2>Loding.........</h2>}
-        </div>
+                    </>
+                ) : <Preloder />}
+                {/* Next Button */}
+                <button
+                    onClick={handleNext}
+                    className="btn btn-secondary position-absolute bg-success"
+                    style={{ right: '10%', top: '50%', transform: 'translateY(-50%)' }}
+                >
+                    Next
+                </button>
+            </div>
+        </>
     );
 }
 

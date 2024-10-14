@@ -5,7 +5,7 @@ function App() {
     return (
         <>
 
-            <div className="bg-slate-300 w-full min-h-screen-screen py-10 flex justify-center items-center">
+            <div className="bg-slate-300 w-full min-h-screen py-10 flex justify-center items-center">
                 <Form />
             </div>
 
