@@ -3,7 +3,6 @@ import Login from './components/Login'
 import axios from 'axios'
 import AdminDashboard from './components/AdminDashboard';
 import UserDashBoard from './components/UserDashBoard';
-import Signup from './components/Signup';
 
 function App() {
   const [users, setUser] = useState([]);
@@ -31,7 +30,7 @@ function App() {
   // Handle login form submission
   const handlesubmit = (username, password) => {
     const user = users.find(u => u.username === username || u.email === username);
-    if (user && user.password === password ) {
+    if (user && user.password === password) {
       setLoginStatus(true);
       setCurrentUser(user);
 
@@ -50,14 +49,13 @@ function App() {
     // Remove the user status from localStorage
     localStorage.removeItem('userStatus');
   };
+
   return (
     <>
-      {!loginStatus ? (
-        <Login handlesubmit={handlesubmit} />
-      ) : (
-        currentUser?.role === 'admin' ? <AdminDashboard handleLogout={handleLogout}/> : <UserDashBoard handleLogout={handleLogout}/>
+      {!loginStatus ? (<Login handlesubmit={handlesubmit} />) : (
+        currentUser?.role === 'admin' ? <AdminDashboard handleLogout={handleLogout} /> : <UserDashBoard handleLogout={handleLogout} />
       )}
-      <Signup />
+      
     </>
   );
 }
