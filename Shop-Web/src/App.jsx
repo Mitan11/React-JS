@@ -3,11 +3,17 @@ import Login from './components/Login'
 import axios from 'axios'
 import AdminDashboard from './components/AdminDashboard';
 import UserDashBoard from './components/UserDashBoard';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const [users, setUser] = useState([]);
   const [loginStatus, setLoginStatus] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
+
+  const success = (msg) => toast.success(msg);
+
+  const error = (msg) => toast.error(msg);
 
   // Check user login status and role from localStorage
   useEffect(() => {
@@ -33,11 +39,10 @@ function App() {
     if (user && user.password === password) {
       setLoginStatus(true);
       setCurrentUser(user);
-
-      // Save login status and user info to localStorage
       localStorage.setItem('userStatus', JSON.stringify(user));
+      success(`Logged in as ${user.username}`);
     } else {
-      alert('Invalid username or password');
+      error('Invalid username or password');
     }
   };
 
@@ -45,18 +50,18 @@ function App() {
     // Clear the user data and login status
     setLoginStatus(false);
     setCurrentUser(null);
-
-    // Remove the user status from localStorage
     localStorage.removeItem('userStatus');
+    success('Logged out successfully');
   };
 
   return (
-    <>
+    <div>
+      <Toaster />
       {!loginStatus ? (<Login handlesubmit={handlesubmit} />) : (
         currentUser?.role === 'admin' ? <AdminDashboard handleLogout={handleLogout} /> : <UserDashBoard handleLogout={handleLogout} />
       )}
-      
-    </>
+
+    </div>
   );
 }
 

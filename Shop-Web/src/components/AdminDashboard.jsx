@@ -5,9 +5,13 @@ import { Link, useNavigate } from "react-router";
 import { ImBin } from "react-icons/im";
 import { FaPenToSquare } from "react-icons/fa6";
 import { MdOutlineAdd } from "react-icons/md";
+import toast, { Toaster } from 'react-hot-toast';
 
 function AdminDashboard({ handleLogout }) {
   const [productData, setProductData] = useState([]);
+
+  const success = (msg) => toast.success(msg);
+  const error = (msg) => toast.error(msg);
 
   // Fetch product data on component mount
   useEffect(() => {
@@ -32,6 +36,7 @@ function AdminDashboard({ handleLogout }) {
       axios.delete(`http://localhost:3000/products/${id}`)
         .then(() => {
           setProductData((prevData) => prevData.filter((product) => product.id !== id));
+          success('Product deleted successfully!');
         })
         .catch((err) => {
           console.error('Error deleting products :', err);
@@ -41,6 +46,7 @@ function AdminDashboard({ handleLogout }) {
 
   return (
     <div className="p-8 w-full min-h-screen bg-gray-100">
+      <Toaster />
       {/* Header */}
       <Header handleLogout={handleLogout} />
 
@@ -54,10 +60,10 @@ function AdminDashboard({ handleLogout }) {
               Manage Items
             </h2>
             <Link to='/addproduct'>
-            <button className="mr-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition flex items-center gap-2">
-              Add
-              <MdOutlineAdd />
-            </button>
+              <button className="mr-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition flex items-center gap-2">
+                Add
+                <MdOutlineAdd />
+              </button>
             </Link>
           </div>
           <div className="overflow-x-auto custom-scrollbar">

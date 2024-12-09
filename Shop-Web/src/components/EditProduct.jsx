@@ -52,7 +52,7 @@ function EditProduct() {
                 .put(`http://localhost:3000/products/${pId}`, updatedProduct)
                 .then(() => {
                     alert("Product updated successfully!");
-                    navigate("/"); // Redirect to the dashboard after saving
+                    navigate("/");
                 })
                 .catch((err) => {
                     alert("Error updating product!");
