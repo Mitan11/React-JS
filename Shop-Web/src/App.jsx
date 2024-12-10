@@ -10,12 +10,9 @@ function App() {
   const [loginStatus, setLoginStatus] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-
   const success = (msg) => toast.success(msg);
-
   const error = (msg) => toast.error(msg);
 
-  // Check user login status and role from localStorage
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem('userStatus'));
     if (savedUser) {
@@ -24,7 +21,6 @@ function App() {
     }
   }, []);
 
-  // Fetch users data from API
   useEffect(() => {
     axios.get('http://localhost:3000/users').then((response) => {
       setUser(response.data);
@@ -33,7 +29,6 @@ function App() {
     });
   }, []);
 
-  // Handle login form submission
   const handlesubmit = (username, password) => {
     const user = users.find(u => u.username === username || u.email === username);
     if (user && user.password === password) {
@@ -47,7 +42,6 @@ function App() {
   };
 
   const handleLogout = () => {
-    // Clear the user data and login status
     setLoginStatus(false);
     setCurrentUser(null);
     localStorage.removeItem('userStatus');

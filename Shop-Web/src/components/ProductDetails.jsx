@@ -8,7 +8,6 @@ function ProductDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Replace this URL with your actual API endpoint
         axios.get(`http://localhost:3000/products/${pId}`)
             .then((response) => {
                 setProduct(response.data);
@@ -88,12 +87,9 @@ function ProductDetails() {
                     </div>
                 </div>
 
-                {/* Additional Info or Suggestions */}
                 <div className="mt-12">
                     <h2 className="text-2xl font-bold text-gray-800 mb-4">You may also like</h2>
-                    {/* Add suggestions grid if applicable */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {/* Placeholder cards for related products */}
                         <div className="bg-gray-100 p-4 rounded-lg shadow-lg">
                             <div className="bg-gray-200 h-40 rounded-lg mb-4"></div>
                             <p className="text-gray-700 font-medium text-center">Related Product</p>

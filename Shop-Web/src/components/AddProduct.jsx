@@ -5,7 +5,6 @@ import { useNavigate } from "react-router";
 function AddProduct() {
     const navigate = useNavigate();
 
-    // State for each field
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState(0);
@@ -16,7 +15,6 @@ function AddProduct() {
     const [dimensions, setDimensions] = useState("");
     const [errors, setErrors] = useState({});
 
-    // Validation function
     const validate = () => {
         const newErrors = {};
         if (!name) newErrors.name = "Product name is required.";
@@ -29,7 +27,6 @@ function AddProduct() {
         if (!dimensions) newErrors.dimensions = "Dimensions are required.";
         setErrors(newErrors);
 
-        // Return true if no errors
         return Object.keys(newErrors).length === 0;
     };
 
@@ -49,7 +46,7 @@ function AddProduct() {
             .post(`http://localhost:3000/products`, newProduct)
             .then(() => {
                 alert("Product added successfully!");
-                navigate("/"); // Redirect to the dashboard after saving
+                navigate("/");
             })
             .catch((err) => {
                 alert("Error adding product!");
@@ -57,7 +54,6 @@ function AddProduct() {
             });
     };
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {

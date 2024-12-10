@@ -6,7 +6,6 @@ function EditProduct() {
     const { pId } = useParams();
     const navigate = useNavigate();
 
-    // State for each field
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState(0);
@@ -16,7 +15,6 @@ function EditProduct() {
     const [weight, setWeight] = useState("");
     const [dimensions, setDimensions] = useState("");
 
-    // Fetch product details by ID
     useEffect(() => {
         axios
             .get(`http://localhost:3000/products/${pId}`)
@@ -34,7 +32,6 @@ function EditProduct() {
             .catch((err) => console.error("Error fetching product:", err));
     }, [pId]);
 
-    // Save updated product details
     const handleSave = () => {
         if (confirm('Do you want to Edit')) {
             const updatedProduct = {
@@ -61,7 +58,6 @@ function EditProduct() {
         }
     };
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         handleSave();

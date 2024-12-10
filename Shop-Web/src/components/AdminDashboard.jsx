@@ -13,13 +13,12 @@ function AdminDashboard({ handleLogout }) {
   const success = (msg) => toast.success(msg);
   const error = (msg) => toast.error(msg);
 
-  // Fetch product data on component mount
   useEffect(() => {
     axios
       .get("http://localhost:3000/products")
       .then((response) => {
         console.log(response);
-        setProductData(response.data); // Update state with API data
+        setProductData(response.data); 
       })
       .catch((error) => {
         console.log("Fetch Error", error);
