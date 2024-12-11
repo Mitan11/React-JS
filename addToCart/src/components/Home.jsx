@@ -4,12 +4,8 @@ import Card from "./Card";
 import axios from "axios";
 import Cart from "./Cart";
 
-
-
 function Home() {
   const [products, setProducts] = useState([]);
-
-  
 
   useEffect(() => {
     axios
@@ -22,14 +18,12 @@ function Home() {
 
   return (
     <>
-
-          <NavBar />
-          <div className="px-4 md:px-8 flex justify-evenly flex-wrap gap-3">
-            {products.map((product) => (
-              <Card key={product.id} product={product} />
-            ))}
-          </div>
-          
+      <NavBar />
+      <div className="px-4 md:px-8 flex justify-evenly flex-wrap gap-3">
+        {products.map((product) => (
+          <Card key={product.id} product={product} />
+        ))}
+      </div>
     </>
   );
 }

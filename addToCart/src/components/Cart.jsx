@@ -6,13 +6,11 @@ function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [cartcount , setCartcount] = useContext(cartcontext);
 
-  // Fetch cart data from localStorage on component mount
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cartProduct")) || [];
     setCartItems(storedCart);
   }, []);
 
-  // Handle removing an item from the cart
   const handleRemoveItem = (id) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
@@ -20,7 +18,6 @@ function Cart() {
     setCartcount(cartcount - 1)
   };
 
-  // Handle increasing the quantity of an item
   const handleIncreaseQuantity = (id) => {
     const updatedCart = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
@@ -29,7 +26,6 @@ function Cart() {
     localStorage.setItem("cartProduct", JSON.stringify(updatedCart));
   };
 
-  // Handle decreasing the quantity of an item
   const handleDecreaseQuantity = (id) => {
     const updatedCart = cartItems.map((item) =>
       item.id === id && item.quantity > 1
@@ -40,14 +36,12 @@ function Cart() {
     localStorage.setItem("cartProduct", JSON.stringify(updatedCart));
   };
 
-  // Handle clearing all items from the cart
   const handleClearAll = () => {
     setCartItems([]);
     localStorage.removeItem("cartProduct");
     setCartcount(0)
   };
 
-  // Calculate total price
   const calculateTotal = () => {
     return cartItems.reduce(
       (total, item) => total + item.quantity * item.price,
