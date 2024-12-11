@@ -1,36 +1,37 @@
-import React, { createContext, useState } from 'react'
-import NavBar from './NavBar'
-import Card from './Card'
+import React, { createContext, useEffect, useState } from "react";
+import NavBar from "./NavBar";
+import Card from "./Card";
+import axios from "axios";
+import Cart from "./Cart";
 
-export const cartcontext = createContext();
-export const addtocartcontext = createContext();
+
 
 function Home() {
+  const [products, setProducts] = useState([]);
 
-    const [cartCount, setCartCount] = useState(0);
-    const addtocart = () => {
-        setCartCount(cartCount + 1);
-    }
+  
 
-    return (
-        <>
-            <cartcontext.Provider value={cartCount}>
-                <addtocartcontext.Provider value={addtocart}>
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/product")
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
-                    <NavBar />
-                    <div className='px-4 md:px-8 flex justify-evenly flex-wrap gap-3'>
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                    </div>
+  return (
+    <>
 
-                </addtocartcontext.Provider>
-            </cartcontext.Provider>
-
-        </>
-    )
+          <NavBar />
+          <div className="px-4 md:px-8 flex justify-evenly flex-wrap gap-3">
+            {products.map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
+          </div>
+          
+    </>
+  );
 }
 
-export default Home
+export default Home;
