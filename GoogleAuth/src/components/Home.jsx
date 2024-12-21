@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
 
-function Home() {
+function Home({ user }) {
+
+  const logout = ()=>{
+    localStorage.removeItem('user');
+    window.location.reload()
+  }
+
   return (
     <div>
-        hime
+      <h2>{user.displayName}</h2>
+      <button onClick={logout} >Logout</button>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

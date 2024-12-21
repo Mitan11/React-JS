@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { auth, provider } from "./config/Firebase";
 import { signInWithPopup } from "firebase/auth";
 function App() {
-  let [data, setData] = useState("");
+  let [data, setData] = useState('');
   let [loading, setLoading] = useState(false);
 
   function GoogleAuth() {
@@ -13,7 +13,7 @@ function App() {
       .then((res) => {
         console.log(res.user);
         setData(res.user);
-        localStorage.setItem("user", JSON.stringify(res.user));
+        localStorage.setItem("user", JSON.stringify(data));
       })
       .catch((err) => {
         console.log(err);
@@ -26,10 +26,9 @@ function App() {
 
   return (
     <div>
-      <button onClick={GoogleAuth} disabled={loading}>
+      {!data?<button onClick={GoogleAuth} disabled={loading}>
         {loading ? "Signing in..." : "Google Sign In"}
-      </button>
-      <Home />
+      </button>:<Home user={data}/>}
     </div>
   );
 }
