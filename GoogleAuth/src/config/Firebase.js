@@ -6,7 +6,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC3EWc5gJ7y9dxo1Cke_-xauTxjk5v4RR8",
+  apiKey: "", //Your api key
   authDomain: "authdeom-2a727.firebaseapp.com",
   projectId: "authdeom-2a727",
   storageBucket: "authdeom-2a727.firebasestorage.app",
