@@ -1,14 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Task from "./Task";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks } from "../app/taskSlice";
+import TaskSkeleton from "./TaskSkeleton";
 
 function Tasks() {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.tasks);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchTasks(dispatch);
+    const loadTasks = async () => {
+      setIsLoading(true);
+      await fetchTasks(dispatch);
+      setIsLoading(false);
+    };
+
+    loadTasks();
   }, [dispatch]);
 
   return (
@@ -21,9 +29,19 @@ function Tasks() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tasks.map((task) => (
-          <Task key={task.id} task={task} />
-        ))}
+        {isLoading ? (
+          <>
+            <TaskSkeleton />
+            <TaskSkeleton />
+            <TaskSkeleton />
+          </>
+        ) : tasks.length > 0 ? (
+          tasks.map((task) => <Task key={task.id} task={task} />)
+        ) : (
+          <div className="col-span-full text-center text-gray-500 py-8">
+            No tasks found. Add some tasks to get started!
+          </div>
+        )}
       </div>
     </div>
   );
