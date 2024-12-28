@@ -5,6 +5,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import { auth, provider } from "../config/firebase";
@@ -15,7 +16,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
 
-  // Google Authentication
   function GoogleAuth() {
     signInWithPopup(auth, provider)
       .then((res) => {
@@ -30,7 +30,6 @@ export const AuthProvider = ({ children }) => {
       });
   }
 
-  // Login with email and password
   function handleLogin(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
@@ -45,10 +44,8 @@ export const AuthProvider = ({ children }) => {
       });
   }
 
-  // Sign up with email and password
   const handleSignUp = (email, password, name) => {
-    const auth = getAuth(); // Get the Firebase authentication instance
-
+    const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
         console.log("User created and display name set");
@@ -61,6 +58,20 @@ export const AuthProvider = ({ children }) => {
         toast.error("This account is already in use");
       });
   };
+
+  function handleOut() {
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("user");
+        setUserData(null);
+        toast.success("User signed out");
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Failed to sign out");
+      });
+  }
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     setUserData(user ? JSON.parse(user) : null);
@@ -68,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ setUserData, userData, GoogleAuth, handleLogin, handleSignUp }}
+      value={{ userData, GoogleAuth, handleLogin, handleSignUp, handleOut }}
     >
       {children}
     </AuthContext.Provider>

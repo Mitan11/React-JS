@@ -1,15 +1,13 @@
-// src/App.js
 import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Login from "./Components/Login";
-import Home from "./Components/Home"; // Assuming you have this component
-import Signup from "./Components/Signup"; // Assuming you have this component
+import Home from "./Components/Home";
+import Signup from "./Components/Signup";
 import { AuthContext } from "./Context/AuthContext";
 
 function App() {
-  const { setUserData, userData, GoogleAuth, handleLogin, handleSignUp } =
+  const { userData, GoogleAuth, handleLogin, handleSignUp, handleOut } =
     useContext(AuthContext);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -19,11 +17,10 @@ function App() {
             !userData ? (
               <Login GoogleAuth={GoogleAuth} handleLogin={handleLogin} />
             ) : (
-              <Home userData={userData} setUserData={setUserData}/>
+              <Home userData={userData} handleOut={handleOut} />
             )
           }
         />
-        {/* <Route path="/home" element={<Home />} /> */}
         <Route
           path="/signup"
           element={<Signup handleSignUp={handleSignUp} />}
