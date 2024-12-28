@@ -54,21 +54,3 @@ export const fetchTasks = async (dispatch) => {
 
 export const { setTasks, addTask, deleteTask, toggleStatus, updateTask } = taskSlice.actions;
 export default taskSlice.reducer;
-
-
-
-// deleteTask: (state, action) => {
-//     state.tasks = state.tasks.filter(task => task.id !== action.payload);
-// },
-// editTask: (state, action) => {
-//     const index = state.tasks.findIndex(task => task.id === action.payload.id);
-//     if (index !== -1) {
-//         state.tasks[index] = action.payload;
-//     }
-// },
-// toggleComplete: (state, action) => {
-//     const task = state.tasks.find(task => task.id === action.payload);
-//     if (task) {
-//         task.completed = !task.completed;
-//     }
-// },
