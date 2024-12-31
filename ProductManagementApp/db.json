@@ -1,0 +1,277 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Smartphone X100",
+      "price": 500,
+      "description": "A modern product with advanced features.",
+      "category": "Gadgets",
+      "quantity": 10,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "2",
+      "name": "Coffee Maker Pro",
+      "price": 200,
+      "description": "An affordable and reliable coffee maker.",
+      "category": "Home Appliances",
+      "quantity": 30,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "3",
+      "name": "Ergonomic Office Chair",
+      "price": 300,
+      "description": "A premium chair designed for long hours of work.",
+      "category": "Office Supplies",
+      "quantity": 20,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "4",
+      "name": "Wooden Coffee Table",
+      "price": 400,
+      "description": "A durable and stylish coffee table.",
+      "category": "Furniture",
+      "quantity": 15,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "5",
+      "name": "Smartwatch S2",
+      "price": 250,
+      "description": "A feature-packed smartwatch for daily use.",
+      "category": "Gadgets",
+      "quantity": 25,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "6",
+      "name": "Portable Air Conditioner",
+      "price": 450,
+      "description": "Keep cool with this portable air conditioner.",
+      "category": "Home Appliances",
+      "quantity": 12,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "7",
+      "name": "Adjustable Standing Desk",
+      "price": 350,
+      "description": "A desk that adjusts for sitting and standing.",
+      "category": "Office Supplies",
+      "quantity": 18,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "8",
+      "name": "Leather Sofa",
+      "price": 900,
+      "description": "A luxurious leather sofa for modern homes.",
+      "category": "Furniture",
+      "quantity": 5,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "9",
+      "name": "Bluetooth Headphones",
+      "price": 150,
+      "description": "Wireless headphones with excellent sound quality.",
+      "category": "Gadgets",
+      "quantity": 30,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "10",
+      "name": "Microwave Oven 700W",
+      "price": 180,
+      "description": "Compact microwave oven for everyday use.",
+      "category": "Home Appliances",
+      "quantity": 40,
+      "image": "https://via.placeholder.com/150"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "adminuser",
+      "password": "123",
+      "email": "admin@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "username": "user2",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "username": "user3",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "username": "user4",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "5",
+      "username": "user5",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "6",
+      "username": "user6",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "7",
+      "username": "user7",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "8",
+      "username": "user8",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "9",
+      "username": "user9",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "10",
+      "username": "user10",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "11",
+      "username": "user11",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "12",
+      "username": "user12",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "13",
+      "username": "user13",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "14",
+      "username": "user14",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "15",
+      "username": "user15",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "16",
+      "username": "user16",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "17",
+      "username": "user17",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "18",
+      "username": "user18",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "19",
+      "username": "user19",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "20",
+      "username": "user20",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "21",
+      "username": "user21",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "22",
+      "username": "user22",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "23",
+      "username": "user23",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "24",
+      "username": "user24",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "25",
+      "username": "user25",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "26",
+      "username": "user26",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "27",
+      "username": "user27",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "28",
+      "username": "user28",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "29",
+      "username": "user29",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "30",
+      "username": "user30",
+      "password": "123",
+      "role": "user"
+    }
+  ]
+}
